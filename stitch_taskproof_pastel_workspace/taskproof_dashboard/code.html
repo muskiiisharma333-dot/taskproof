@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaskProof - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Outfit:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://db.onlinewebfonts.com/c/11059f3ee51cbdd8fb3ce1efcf9105ed?family=Bitcount+Single" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#a8cbe8",
+                        "on-secondary": "#ffffff",
+                        "primary": "#6b5779",
+                        "on-primary-fixed-variant": "#533f60",
+                        "background": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-fixed": "#251432",
+                        "surface": "#f8f9fa",
+                        "tertiary": "#7c5264",
+                        "outline-variant": "#cdc4cd",
+                        "surface-bright": "#f8f9fa",
+                        "surface-tint": "#6b5779",
+                        "inverse-primary": "#d7bde5",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#cae6ff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed-variant": "#623b4c",
+                        "on-secondary-fixed": "#001e2f",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-container": "#cdb4db",
+                        "surface-variant": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#edb8cc",
+                        "on-primary-container": "#584465",
+                        "on-secondary-container": "#42647e",
+                        "surface-container-high": "#e7e8e9",
+                        "primary-fixed": "#f3daff",
+                        "surface-dim": "#d9dadb",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "on-secondary-fixed-variant": "#274a63",
+                        "on-surface-variant": "#4a454c",
+                        "on-tertiary-container": "#684051",
+                        "on-tertiary-fixed": "#301020",
+                        "secondary-container": "#bee1ff",
+                        "outline": "#7c757d",
+                        "tertiary-container": "#e3aec3",
+                        "secondary": "#40627b",
+                        "inverse-surface": "#2e3132",
+                        "primary-fixed-dim": "#d7bde5",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffd8e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "card-padding": "24px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "decorative-callout": ["Great Vibes"],
+                        "label-sm": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "display-brand": ["Bitcount Single"]
+                    },
+                    "fontSize": {
+                        "decorative-callout": ["28px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-brand": ["40px", { "lineHeight": "48px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa; /* Light mode default */
+        }
+        
+        /* Mesh Gradient Background */
+        .mesh-gradient {
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(205, 180, 219, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(168, 203, 232, 0.15), transparent 25%);
+            background-color: #f8f9fa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-input {
+            background: rgba(205, 180, 219, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-input:focus {
+            border-color: #bee1ff;
+            box-shadow: 0 0 15px rgba(190, 225, 255, 0.3);
+            outline: none;
+        }
+
+        /* Brand Flow Gradient */
+        .bg-brand-flow {
+            background: linear-gradient(135deg, #cdb4db, #a8cbe8);
+        }
+
+        .text-brand-flow {
+            background: linear-gradient(135deg, #6b5779, #40627b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(107, 87, 121, 0.2);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(107, 87, 121, 0.4);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Mesh Background -->
+<div class="mesh-gradient"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-surface/60 backdrop-blur-xl border-b border-white/20 shadow-sm transition-all duration-300">
+<div class="flex items-center gap-8">
+<a class="font-display-brand text-display-brand text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200" href="#">
+                TaskProof
+            </a>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity font-label-sm text-label-sm active:scale-95 duration-200" href="#">Features</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity font-label-sm text-label-sm active:scale-95 duration-200" href="#">Workflow</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-brand-flow text-white font-label-sm text-label-sm px-6 py-2.5 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 shadow-md shadow-primary-container/50">
+                Connect Wallet
+            </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter pt-32 pb-24 min-h-screen">
+<div class="mb-12 flex justify-between items-end">
+<div>
+<h1 class="font-decorative-callout text-decorative-callout text-tertiary mb-2">Welcome back</h1>
+<h2 class="font-headline-lg text-headline-lg text-primary">Dashboard Overview</h2>
+</div>
+<div class="hidden md:flex gap-3">
+<button class="glass-card px-4 py-2 flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">filter_list</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Filter</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Column (Left) -->
+<div class="col-span-1 md:col-span-8 flex flex-col gap-gutter">
+<!-- Quick Create & Wallet Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Create Task Card -->
+<div class="glass-card p-card-padding flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-primary-container/30 rounded-full blur-2xl group-hover:bg-primary-container/50 transition-all duration-500"></div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface">New Task</h3>
+<button class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+<div class="mt-2 space-y-3">
+<input class="w-full glass-input rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50 focus:ring-0" placeholder="Task description..." type="text"/>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-tertiary-container/30 text-on-tertiary-container font-label-sm text-label-sm border border-tertiary-container/50 hover:bg-tertiary-container/50 transition-colors">Design</button>
+<button class="px-3 py-1.5 rounded-lg bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm border border-secondary-container/50 hover:bg-secondary-container/50 transition-colors">Code</button>
+</div>
+</div>
+</div>
+<!-- Wallet Status Widget -->
+<div class="glass-card p-card-padding flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -left-12 -bottom-12 w-32 h-32 bg-secondary-container/30 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(64,98,123,0.6)]"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Connected</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface truncate">GXXX...A8F2</h3>
+</div>
+<div class="mt-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Stellar Balance</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-primary">4,250.00</span>
+<span class="font-body-md text-body-md text-secondary">XLM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Progress Section -->
+<div class="glass-card p-card-padding">
+<h3 class="font-decorative-callout text-decorative-callout text-tertiary mb-6">Active Workflows</h3>
+<div class="space-y-6">
+<!-- Progress Card 1 -->
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Q3 Marketing Campaign Proofs</span>
+<span class="font-label-sm text-label-sm text-primary">75%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden border border-white/50">
+<div class="h-full bg-brand-flow rounded-full w-3/4 relative">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+</div>
+</div>
+<!-- Progress Card 2 -->
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Smart Contract Audit Fixes</span>
+<span class="font-label-sm text-label-sm text-secondary">40%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden border border-white/50">
+<div class="h-full bg-secondary-fixed-dim rounded-full w-2/5"></div>
+</div>
+</div>
+<!-- Progress Card 3 -->
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Brand Guidelines Update</span>
+<span class="font-label-sm text-label-sm text-tertiary">90%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden border border-white/50">
+<div class="h-full bg-tertiary-fixed-dim rounded-full w-[90%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Column (Right) -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-gutter">
+<!-- Proof Hash Viewer -->
+<div class="glass-card p-card-padding bg-surface-container-lowest/80">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Latest Verification</h3>
+</div>
+<div class="bg-surface-container px-4 py-3 rounded-xl border border-outline-variant/30">
+<p class="font-mono text-xs text-on-surface-variant break-all leading-relaxed">
+                            0x7a8b9c...f1e2d3
+                            <br/>
+                            Hash: a1b2c3d4e5f6g7h8i9j0
+                        </p>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg border border-primary-container text-primary hover:bg-primary-container/20 transition-colors font-label-sm text-label-sm">
+                        View on Explorer
+                    </button>
+</div>
+<!-- Real-time Activity Feed -->
+<div class="glass-card p-card-padding flex-1">
+<h3 class="font-decorative-callout text-decorative-callout text-tertiary mb-4">Activity</h3>
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-secondary-fixed-dim before:to-transparent">
+<!-- Feed Item 1 -->
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-secondary-fixed-dim border-2 border-white shadow-sm z-10"></div>
+<div class="flex items-start gap-3">
+<img class="w-8 h-8 rounded-full object-cover border border-white shadow-sm" data-alt="A small circular avatar of a young professional woman with glasses, smiling softly. The lighting is bright and airy, fitting a modern light-mode UI. Pastel lavender and light blue tones dominate the subtle background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJJiAGkyjS-iqKZpEHOoso-_j-0Whx1hYyBaDQiMk1b42Fh2XG7fGrh4qiwaRxTPp5UqSw4EJKfPa9JNBzprxrh97JDwsmOz-NXwpSXbROL2sThKNN4r7vpm9jTsxEQSeqyqgggeHf8T18ZLVcExfJPmKIEDGZy1YSSFarnDOkRnRV6FVdkynViVBTZyVb51wYICnSgRhttiVFalBDY115S1HJMXa5DGCXD0rqXsN8d3N4GqlxJCMBi6FwRHQNydT2MtbgBNUScpbl"/>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface"><span class="font-bold">Sarah</span> verified a task.</p>
+<p class="text-xs text-on-surface-variant mt-0.5">2 mins ago</p>
+</div>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-surface-container-high border-2 border-white z-10"></div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-label-sm text-label-sm border border-white shadow-sm">
+                                    MJ
+                                </div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface"><span class="font-bold">Mike</span> submitted proof.</p>
+<p class="text-xs text-on-surface-variant mt-0.5">15 mins ago</p>
+</div>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-surface-container-high border-2 border-white z-10"></div>
+<div class="flex items-start gap-3">
+<img class="w-8 h-8 rounded-full object-cover border border-white shadow-sm" data-alt="A small circular avatar of a modern 3D rendered character face, stylized and friendly. The lighting is soft studio lighting. The color palette includes soft pinks and cool grays, matching a playful precision aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlUzPNb2XJtcOAO631QFSh3Sih1rJbcvmikLz1yuqNO55tvTBRd5HzorsCyUrhBh0LPV3MerZs4H5h_TopkYrGcdlJxEgApF0XxqwXnLFqTGWo7YbkEG-GgvAvWo_hxPOOP63mjDoh5GhSNdrXgURLz4K3K-nO-iiNTE1D13agaIhRJrvHoDIiCCcKYLvGjUc0oTSI1aOjPHevR4seaAKmZ0joEyEag6aja3I80I_AM4BTYadGME3di591hzqUdsOg85dvu099ef-2"/>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface"><span class="font-bold">Alex</span> commented.</p>
+<p class="text-xs text-on-surface-variant mt-0.5">1 hr ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-gutter py-12 flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-low mt-auto">
+<a class="font-display-brand text-headline-md text-primary hover:opacity-80 transition-opacity" href="#">
+            TaskProof
+        </a>
+<div class="flex gap-6 items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant/70 hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant/70 hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant/70 hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">
+            © 2024 TaskProof. Built on Stellar.
+        </p>
+</footer>
+</body></html>

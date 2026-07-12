@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaskProof - Event Stream</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&amp;family=Great+Vibes&amp;family=Bitcount+Single:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#d9dadb",
+                      "on-secondary-fixed-variant": "#274a63",
+                      "tertiary-container": "#e3aec3",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#edeeef",
+                      "surface-container-high": "#e7e8e9",
+                      "outline": "#7c757d",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#f3f4f5",
+                      "outline-variant": "#cdc4cd",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#cdb4db",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#251432",
+                      "on-primary-container": "#584465",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#d7bde5",
+                      "surface-variant": "#e1e3e4",
+                      "secondary-container": "#bee1ff",
+                      "surface": "#f8f9fa",
+                      "on-secondary-fixed": "#001e2f",
+                      "secondary-fixed": "#cae6ff",
+                      "secondary": "#40627b",
+                      "on-secondary-container": "#42647e",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#684051",
+                      "tertiary": "#7c5264",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#4a454c",
+                      "surface-tint": "#6b5779",
+                      "primary": "#6b5779",
+                      "primary-fixed": "#f3daff",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-fixed-variant": "#533f60",
+                      "surface-container-highest": "#e1e3e4",
+                      "background": "#f8f9fa",
+                      "on-background": "#191c1d",
+                      "inverse-surface": "#2e3132",
+                      "secondary-fixed-dim": "#a8cbe8",
+                      "on-tertiary-fixed-variant": "#623b4c",
+                      "tertiary-fixed-dim": "#edb8cc",
+                      "tertiary-fixed": "#ffd8e6",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#d7bde5",
+                      "on-surface": "#191c1d",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-tertiary-fixed": "#301020"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "card": "24px"
+              },
+              "spacing": {
+                      "card-padding": "24px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Outfit"
+                      ],
+                      "headline-lg": [
+                              "Outfit"
+                      ],
+                      "decorative-callout": [
+                              "Great Vibes"
+                      ],
+                      "body-lg": [
+                              "Outfit"
+                      ],
+                      "headline-lg-mobile": [
+                              "Outfit"
+                      ],
+                      "headline-md": [
+                              "Outfit"
+                      ],
+                      "label-sm": [
+                              "Outfit"
+                      ],
+                      "display-brand": [
+                              "Bitcount Single"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "decorative-callout": [
+                              "28px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "26px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-brand": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: theme('borderRadius.card');
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .pulse-live {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        .table-row-hover:hover {
+            background-color: theme('colors.primary-container');
+            background-opacity: 0.2;
+            transform: scale(0.995);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden min-h-screen relative">
+<!-- Shader Background Placeholder -->
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-40 flex justify-between items-center px-4 md:px-8 py-3 bg-surface/70 backdrop-blur-lg border-b border-white/20 shadow-sm">
+<div class="flex items-center gap-6">
+<div class="font-display-brand text-display-brand text-primary">TaskProof</div>
+<div class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Docs</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Network</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Stellar Explorer</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-2">
+<button class="p-2 rounded-full text-primary hover:bg-primary-container/50 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-primary hover:bg-primary-container/50 transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">Connect Wallet</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Stellar Wallet Address" class="w-full h-full object-cover" data-alt="A small circular abstract geometric avatar representing a generic user profile image, using soft pastel lavender and sky blue colors. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5nsx2BgWZC9qF5ONUTksh_4ntVpQx5VwvImzT8h-lObwITWXLGj5IE22XXQ-kQssEmxINVf1R_yqy5kpUPIR9mFAPj0Jc_9xX3TbgTfMK9IfDw47Ia3lGqjk2WjWWOkTqPDBlDj3fo0dMUO74yrgW-E-plmR0iYQByWtxlVnTdT7quzBaZ1NkD0EpC44AjDzbYAEMrhyCvw524nt9szUJTJk8xftHnOfr3YzqbCQz9klKj1R0WyRD2QNGHS8FOUTQb5XzcB-G_vAd"/>
+</div>
+</div>
+</nav>
+<div class="flex h-screen pt-[72px]">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-full py-8 px-4 bg-surface/60 backdrop-blur-xl h-screen w-64 rounded-r-xl border-r border-white/20 shadow-sm z-30 fixed left-0 top-[72px] bottom-0">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">wallet</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-primary">Stellar Dev</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Mainnet Active</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2 overflow-y-auto pr-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">assignment</span> Tasks
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">verified</span> Proof Registry
+                </a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-2 font-label-sm text-label-sm scale-[0.97] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">stream</span> Event Stream
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">description</span> Contracts
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">publish</span> Deployment
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">rule</span> Testing
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">terminal</span> CI/CD
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Transactions
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/50 transition-colors duration-200 rounded-lg px-4 py-2 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                </a>
+</nav>
+<div class="mt-4 px-4">
+<button class="w-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm py-2 rounded-lg hover:bg-primary-container/50 transition-colors duration-200">Connect Wallet</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-[256px] p-margin-mobile md:p-gutter max-w-container-max mx-auto w-full pb-[100px] lg:pb-gutter">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary flex items-center gap-3">
+                        Event Stream
+                        <span class="flex items-center gap-1 bg-error-container text-error font-label-sm text-label-sm px-2 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-error pulse-live"></span> LIVE
+                        </span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Real-time monitoring of TaskProof smart contract events.</p>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap gap-2 glass-card p-2">
+<button class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-4 py-2 rounded-lg transition-colors shadow-sm">All</button>
+<button class="bg-surface text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-lg hover:bg-surface-container-high transition-colors">Task</button>
+<button class="bg-surface text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-lg hover:bg-surface-container-high transition-colors">Registry</button>
+<button class="bg-surface text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-lg hover:bg-surface-container-high transition-colors">Verification</button>
+</div>
+</div>
+<!-- Event Stream Table Card -->
+<div class="glass-card overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/20 bg-surface/30">
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">Event Type</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">Contract</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">Timestamp</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">Transaction Hash</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">Payload</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="border-b border-white/10 table-row-hover cursor-pointer">
+<td class="p-4">
+<span class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">add_circle</span> TaskCreated
+                                    </span>
+</td>
+<td class="p-4 text-secondary font-mono text-sm">TP-Manager-v1</td>
+<td class="p-4 text-on-surface-variant text-sm">Just now</td>
+<td class="p-4 text-primary font-mono text-sm truncate max-w-[150px]">0x7a3f...9b2c</td>
+<td class="p-4">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-1 rounded text-xs font-mono">{ taskId: 492, worker: ... }</span>
+</td>
+<td class="p-4">
+<span class="bg-tertiary-container/50 text-on-tertiary-container font-label-sm text-label-sm px-2 py-1 rounded-full flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                    </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-white/10 table-row-hover cursor-pointer bg-surface/20">
+<td class="p-4">
+<span class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]">verified</span> ProofStored
+                                    </span>
+</td>
+<td class="p-4 text-secondary font-mono text-sm">TP-Registry-v2</td>
+<td class="p-4 text-on-surface-variant text-sm">2 min ago</td>
+<td class="p-4 text-primary font-mono text-sm truncate max-w-[150px]">0x1e8d...4f1a</td>
+<td class="p-4">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-1 rounded text-xs font-mono">{ proofId: "pf-88", ... }</span>
+</td>
+<td class="p-4">
+<span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-full flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">sync</span> Pending
+                                    </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-white/10 table-row-hover cursor-pointer">
+<td class="p-4">
+<span class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">update</span> RegistryUpdated
+                                    </span>
+</td>
+<td class="p-4 text-secondary font-mono text-sm">TP-Registry-v2</td>
+<td class="p-4 text-on-surface-variant text-sm">15 min ago</td>
+<td class="p-4 text-primary font-mono text-sm truncate max-w-[150px]">0x9c2b...7d8e</td>
+<td class="p-4">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-1 rounded text-xs font-mono">{ rootHash: "0x...", ... }</span>
+</td>
+<td class="p-4">
+<span class="bg-tertiary-container/50 text-on-tertiary-container font-label-sm text-label-sm px-2 py-1 rounded-full flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                    </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-white/10 table-row-hover cursor-pointer bg-surface/20">
+<td class="p-4">
+<span class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">assignment_turned_in</span> TaskCompleted
+                                    </span>
+</td>
+<td class="p-4 text-secondary font-mono text-sm">TP-Manager-v1</td>
+<td class="p-4 text-on-surface-variant text-sm">1 hr ago</td>
+<td class="p-4 text-primary font-mono text-sm truncate max-w-[150px]">0x4f5a...1b9c</td>
+<td class="p-4">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-1 rounded text-xs font-mono">{ taskId: 480, reward: ... }</span>
+</td>
+<td class="p-4">
+<span class="bg-tertiary-container/50 text-on-tertiary-container font-label-sm text-label-sm px-2 py-1 rounded-full flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                    </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="table-row-hover cursor-pointer">
+<td class="p-4">
+<span class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[18px]">warning</span> VerificationFailed
+                                    </span>
+</td>
+<td class="p-4 text-secondary font-mono text-sm">TP-Verifier-v1</td>
+<td class="p-4 text-on-surface-variant text-sm">3 hrs ago</td>
+<td class="p-4 text-primary font-mono text-sm truncate max-w-[150px]">0x2a1c...8d4e</td>
+<td class="p-4">
+<span class="bg-error-container/50 text-error px-2 py-1 rounded text-xs font-mono">{ reason: "invalid_sig", ... }</span>
+</td>
+<td class="p-4">
+<span class="bg-error-container/50 text-error font-label-sm text-label-sm px-2 py-1 rounded-full flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">error</span> Failed
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-white/20 flex justify-center">
+<button class="text-primary font-label-sm text-label-sm hover:underline flex items-center gap-1">Load More Events <span class="material-symbols-outlined text-[16px]">expand_more</span></button>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe pt-2 bg-surface/80 backdrop-blur-2xl border-t border-white/20 shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-sm text-label-sm mt-1">Registry</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-sm text-label-sm mt-1">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-1">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>TaskProof - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&amp;family=Great+Vibes&amp;family=Bitcount+Single:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-fixed-variant": "#274a63",
+                    "tertiary-container": "#e3aec3",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#edeeef",
+                    "surface-container-high": "#e7e8e9",
+                    "outline": "#7c757d",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "outline-variant": "#cdc4cd",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#cdb4db",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#251432",
+                    "on-primary-container": "#584465",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#d7bde5",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-container": "#bee1ff",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed": "#001e2f",
+                    "secondary-fixed": "#cae6ff",
+                    "secondary": "#40627b",
+                    "on-secondary-container": "#42647e",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#684051",
+                    "tertiary": "#7c5264",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#4a454c",
+                    "surface-tint": "#6b5779",
+                    "primary": "#6b5779",
+                    "primary-fixed": "#f3daff",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed-variant": "#533f60",
+                    "surface-container-highest": "#e1e3e4",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed-dim": "#a8cbe8",
+                    "on-tertiary-fixed-variant": "#623b4c",
+                    "tertiary-fixed-dim": "#edb8cc",
+                    "tertiary-fixed": "#ffd8e6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#d7bde5",
+                    "on-surface": "#191c1d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed": "#301020"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px",
+                    "2xl": "24px"
+            },
+            "spacing": {
+                    "card-padding": "24px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Outfit"
+                    ],
+                    "headline-lg": [
+                            "Outfit"
+                    ],
+                    "decorative-callout": [
+                            "Great Vibes"
+                    ],
+                    "body-lg": [
+                            "Outfit"
+                    ],
+                    "headline-lg-mobile": [
+                            "Outfit"
+                    ],
+                    "headline-md": [
+                            "Outfit"
+                    ],
+                    "label-sm": [
+                            "Outfit"
+                    ],
+                    "display-brand": [
+                            "Bitcount Single"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "decorative-callout": [
+                            "28px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "26px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-brand": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f8f9fa;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .pt-safe {
+            padding-top: env(safe-area-inset-top);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #6b5779, #42647e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #cdb4db, #bee1ff);
+        }
+        
+        /* Hide scrollbar for horizontal scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface font-body-md bg-background min-h-screen relative overflow-x-hidden">
+<!-- Background Shader -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-30">
+
+</div>
+<!-- Top Navigation (Mobile) -->
+<nav class="fixed top-0 left-0 right-0 z-40 bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-lg pt-safe shadow-sm border-b border-white/20 dark:border-white/10 flex justify-between items-center px-4 md:px-8 py-3 w-full">
+<div class="flex items-center gap-3">
+<button class="lg:hidden text-primary p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-display-brand text-display-brand text-primary dark:text-primary-fixed-dim text-2xl">TaskProof</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline-md text-sm border border-white/40 shadow-sm overflow-hidden">
+<img alt="User Wallet Avatar" class="w-full h-full object-cover" data-alt="A close up, high key macro shot of a sleek metallic surface with subtle pearlescent lavender and light blue reflections, representing a digital wallet interface in a modern, light-mode minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe_Q40cW6zelT-HmSb4UG-2a6Mdw_Srl6gIy6K7ntH3u7NN2rIaLZMGnfa3LAW5m-t42WJZ50i5HYg6eDFKMuCF7Q5xB4BmrlgGRXuz21wl9hLlpG-jrppU6yyAUUS2sV4etWeOMKyp8Wnus9qPlySaB8d1hefHcN70bW2P89Yw4zkl79n874-VEdqbKeT081Y3jtNXcSTh4mC95glW8MtVH036ViAl8Z2NGwc_3RPc4Y2atWeeetFKVwW287v1ZKwERcTz2yWsvNt"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="relative z-10 pt-20 pb-24 px-margin-mobile flex flex-col gap-6 max-w-container-max mx-auto">
+<!-- Welcome Section -->
+<header class="pt-4 pb-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Welcome back, <span class="gradient-text">Stellar Dev</span></h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Here is what is happening with your tasks today.</p>
+</header>
+<!-- Quick Actions Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Create Task Card -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between aspect-square active:scale-[0.98] transition-transform cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_task</span>
+</div>
+<div>
+<h3 class="font-headline-md text-lg text-on-surface mb-1">Create Task</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-tight">Deploy new smart contract</p>
+</div>
+</div>
+<!-- Active Workflows Card -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between aspect-square active:scale-[0.98] transition-transform cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+</div>
+<div>
+<h3 class="font-headline-md text-lg text-on-surface mb-1">Workflows</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-tight">3 active deployments</p>
+</div>
+</div>
+</section>
+<!-- Stats Scroller -->
+<section class="flex overflow-x-auto no-scrollbar gap-4 pb-2 -mx-margin-mobile px-margin-mobile snap-x">
+<div class="glass-card rounded-xl p-4 min-w-[140px] snap-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Tasks</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-primary">1,248</p>
+</div>
+<div class="glass-card rounded-xl p-4 min-w-[140px] snap-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Success Rate</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-secondary">99.9%</p>
+</div>
+<div class="glass-card rounded-xl p-4 min-w-[140px] snap-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Network</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-tertiary">Active</p>
+</div>
+</section>
+<!-- Recent Activity Table -->
+<section class="glass-card rounded-2xl overflow-hidden mt-2">
+<div class="p-4 border-b border-white/30 flex justify-between items-center">
+<h2 class="font-headline-md text-xl text-on-surface">Recent Activity</h2>
+<button class="text-primary font-label-sm text-label-sm">View All</button>
+</div>
+<div class="w-full overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse min-w-[400px]">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-medium">Task ID</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-medium">Status</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-medium">Time</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-sm">
+<tr class="border-b border-white/20 hover:bg-white/40 transition-colors">
+<td class="p-3 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">description</span>
+                                #TK-8492
+                            </td>
+<td class="p-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#e6f4ea] text-[#137333]">Completed</span>
+</td>
+<td class="p-3 text-on-surface-variant">2 mins ago</td>
+</tr>
+<tr class="border-b border-white/20 hover:bg-white/40 transition-colors">
+<td class="p-3 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">terminal</span>
+                                #TK-8491
+                            </td>
+<td class="p-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#fef7e0] text-[#b06000]">Processing</span>
+</td>
+<td class="p-3 text-on-surface-variant">15 mins ago</td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-3 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm">verified</span>
+                                #TK-8490
+                            </td>
+<td class="p-3">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#e6f4ea] text-[#137333]">Completed</span>
+</td>
+<td class="p-3 text-on-surface-variant">1 hour ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe pt-2 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-2xl border-t border-white/20 dark:border-white/10 rounded-t-xl shadow-lg">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 px-4 scale-[0.95] duration-150 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<!-- Registry (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-sm text-label-sm mt-1">Registry</span>
+</a>
+<!-- Tasks (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-sm text-label-sm mt-1">Tasks</span>
+</a>
+<!-- Wallet (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-1">Wallet</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+</body></html>
