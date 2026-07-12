@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #f8f9fa;
+    color: #191c1d;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  .dark body {
+    background-color: #191c1d;
+    color: #f8f9fa;
+  }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 87, 121, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 87, 121, 0.4);
+}
+
+/* Soft Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(107, 87, 121, 0.05);
+}
+
+.dark .glass-card {
+  background: rgba(46, 49, 50, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Glass inputs */
+.glass-input {
+  background: rgba(205, 180, 219, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.dark .glass-input {
+  background: rgba(205, 180, 219, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-input:focus {
+  border-color: #bee1ff;
+  box-shadow: 0 0 15px rgba(190, 225, 255, 0.3);
+  outline: none;
+}
+
+/* Brand Flow Gradients */
+.bg-brand-flow {
+  background: linear-gradient(135deg, #cdb4db, #a8cbe8);
+}
+
+.text-brand-flow {
+  background: linear-gradient(135deg, #6b5779, #40627b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6b5779, #42647e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-btn {
+  background: linear-gradient(135deg, #cdb4db, #bee1ff);
+}
+
+.flow-gradient {
+  background: linear-gradient(135deg, #cdb4db 0%, #bee1ff 100%);
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #cdb4db 0%, #ffc8dd 100%);
+}
+
+.mesh-gradient-bg {
+  background-color: #f8f9fa;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(285,41%,86%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(205,100%,88%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(285,41%,86%,1) 0, transparent 50%);
+}
+
+.dark .mesh-gradient-bg {
+  background-color: #191c1d;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(285,15%,15%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(205,15%,12%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(285,15%,15%,1) 0, transparent 50%);
+}
+
+.table-row-hover:hover {
+  background-color: rgba(205, 180, 219, 0.15);
+  transform: scale(0.995);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom Hide Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations mapping */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(1rem) translateX(0); opacity: 0; }
+  to { transform: translateY(0) translateX(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Global Dark Mode Contrast Overrides */
+.dark .text-on-surface,
+.dark .text-on-background {
+  color: #f8f9fa !important;
+}
+
+.dark .text-on-surface-variant {
+  color: #cdc4cd !important;
+}
+
+.dark .text-primary {
+  color: #d7bde5 !important;
+}
+
+.dark .text-secondary {
+  color: #a8cbe8 !important;
+}
+
+.dark .text-tertiary {
+  color: #edb8cc !important;
+}
+
+.dark .bg-surface {
+  background-color: #2e3132 !important;
+}
+
+.dark .border-outline-variant {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
