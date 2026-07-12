@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+members = [
+    "task",
+    "registry"
+]
+
+[patch.crates-io]
+ed25519-dalek = { path = "ed25519-dalek-patch" }
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
