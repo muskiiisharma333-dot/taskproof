@@ -2,6 +2,8 @@
 
 > **Every milestone leaves a proof.**
 
+**Live Deployed Application**: [https://taskproof-muskiii.netlify.app/](https://taskproof-muskiii.netlify.app/)
+
 A decentralized, production-grade proof-of-completion platform built on Stellar Soroban. TaskProof enables teams, freelancers, and clients to create tasks, log progress milestones, and record cryptographic proof hashes securely on-chain—maintaining a verifiable, immutable history of work completion.
 
 ---
@@ -395,7 +397,9 @@ The project's deployment pipeline is managed by [`scripts/deploy.js`](file:///c:
 
 ---
 
-## 📍 Contract Addresses
+## 📍 Contract Addresses & Live Deployment
+
+**Live Deployed Application**: [https://taskproof-muskiii.netlify.app/](https://taskproof-muskiii.netlify.app/)
 
 The current deployed contract configuration on **Stellar Testnet**:
 
