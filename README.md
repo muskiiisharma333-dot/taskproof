@@ -531,7 +531,7 @@ Both jobs run in parallel, ensuring that smart contract changes and frontend upd
 
 
 ## CI/CD Pipeline
-<img width="392" height="251" alt="image" src="https://github.com/user-attachments/assets/f4429c47-25e5-455f-b82c-0bf4b8bd5ed8" />
+<img width="935" height="463" alt="image" src="https://github.com/user-attachments/assets/e1bee446-d3ed-4c21-b816-c5901b4f6318" />
 
 
 ## Passing Tests
