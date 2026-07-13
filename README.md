@@ -523,30 +523,25 @@ Both jobs run in parallel, ensuring that smart contract changes and frontend upd
 ## 📸 Screenshots
 
 ## Landing Page
+<img width="959" height="475" alt="image" src="https://github.com/user-attachments/assets/f4add633-96ba-4167-8f90-cd9ed68f2b04" />
 
-## Wallet Connected
-
-## Dashboard
-
-## Create Task
-
-## Complete Task
-
-## Proof Registry
-
-## Activity Feed
 
 ## Mobile Responsive UI
+<img width="197" height="409" alt="image" src="https://github.com/user-attachments/assets/7d3827d1-d002-489a-8afd-139232eb8bb0" />
 
-## Contract Interaction
 
 ## CI/CD Pipeline
+<img width="392" height="251" alt="image" src="https://github.com/user-attachments/assets/f4429c47-25e5-455f-b82c-0bf4b8bd5ed8" />
+
 
 ## Passing Tests
+<img width="392" height="251" alt="image" src="https://github.com/user-attachments/assets/eb320e8c-cc2b-4d0f-b34c-94d768169301" />
 
 ---
 
 ## 🎥 Demo Video
+
+https://drive.google.com/file/d/1OS2xuSyfFwkiE0fn0zqJKPCL86w9_35-/view?usp=sharing
 
 The demonstration walk-through should showcase the following user flow:
 1. **Simulation Walkthrough**: Renders the Landing page, connects a mock wallet, and walks through creating tasks and logging milestones.
