@@ -340,20 +340,16 @@ The React frontend loads its network, RPC configuration, and contract references
    cargo test
    ```
 
-2. **Run frontend unit tests**:
+2. **Run unified tests suite (frontend + integration configuration checks)**:
    ```bash
-   npm run test:frontend
+   npm run test
    ```
+   *(Note: You can also run them individually using `npm run test:frontend` or `npm run test:integration`)*
 
 3. **Deploy contracts to Testnet**:
    Ensure you have internet connectivity. This compiles the contracts, generates a deployer key, funds it via Friendbot, deploys both WASM binaries to Testnet, sets up the linkage, and updates the frontend configuration:
    ```bash
    npm run deploy
-   ```
-
-4. **Verify integration configurations**:
-   ```bash
-   npm run test:integration
    ```
 
 5. **Start the local development server**:
@@ -441,7 +437,14 @@ A typical user interaction follows this sequence:
 
 TaskProof uses a multi-layered testing strategy to verify contract logic, frontend states, and configuration parameters.
 
-### 1. Contract Tests
+### 1. Unified Test Suite
+Runs both the frontend unit tests and the configuration integration checks sequentially from the workspace root.
+* **Run command**:
+  ```bash
+  npm run test
+  ```
+
+### 2. Contract Tests
 Written in Rust using the `soroban-sdk` test environment. They verify task creation, authorization checks, progress boundaries (preventing updates > 100%), and the dynamic cross-contract execution flow between the Task and Registry contracts.
 * **Run command**:
   ```bash
