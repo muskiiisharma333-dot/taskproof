@@ -407,29 +407,87 @@ The current deployed contract configuration on **Stellar Testnet**:
 
 ---
 
-## 🔄 Transaction Example
+## 🔗 Deployment Evidence
 
-A typical user interaction follows this sequence:
+### Progress Registry Contract
+* **Contract ID**: `CAQSIDKJH4W5MYPUPCTKPJYD4KSLNFTMITXAAS3UOXQ2TX437KJYLBOO`
+* **WASM Upload Transaction Hash**: `868d0eab9e8ee6a7e4c25d52c821d1983e886e102596c9f8e13733fec3a31d02`
+* **WASM Upload Explorer Link**: [Stellar.expert - Registry WASM Upload](https://stellar.expert/explorer/testnet/tx/868d0eab9e8ee6a7e4c25d52c821d1983e886e102596c9f8e13733fec3a31d02)
+* **Contract Instantiation (Initialization) Transaction Hash**: `45d7dcfced78be6a3147b1f0bcc7355ee214952ecc9dad99086dbe93af58bc58`
+* **Contract Instantiation Explorer Link**: [Stellar.expert - Registry Instantiation](https://stellar.expert/explorer/testnet/tx/45d7dcfced78be6a3147b1f0bcc7355ee214952ecc9dad99086dbe93af58bc58)
+* **Deployment Timestamp**: `2026-07-10T16:07:08Z`
+* **Network**: `Stellar Testnet`
+
+### Task Contract
+* **Contract ID**: `CAVWBY4AFQ5FF723ZJ5KPI4SY5HSOYR4P63XKOVEXSBWWII4FPKZ2NL4`
+* **WASM Upload Transaction Hash**: `46932d7e8afb348effae81bcbe318df2f66d87bfbf6d4c2b08a46357ac705810`
+* **WASM Upload Explorer Link**: [Stellar.expert - Task WASM Upload](https://stellar.expert/explorer/testnet/tx/46932d7e8afb348effae81bcbe318df2f66d87bfbf6d4c2b08a46357ac705810)
+* **Contract Instantiation (Initialization) Transaction Hash**: `3880a7778f5ad0084ae5ebd0fec80d08847936878f944d503cb2d038a283379e`
+* **Contract Instantiation Explorer Link**: [Stellar.expert - Task Instantiation](https://stellar.expert/explorer/testnet/tx/3880a7778f5ad0084ae5ebd0fec80d08847936878f944d503cb2d038a283379e)
+* **Deployment Timestamp**: `2026-07-10T16:07:18Z`
+* **Network**: `Stellar Testnet`
+
+### Mutual Linkage Configuration
+* **Linking Transaction Hash**: `3b0c31e1e725ba545e0c7451e3571dcf6740eabf20e39ad1d43b4f3d59d618d6`
+* **Linking Explorer Link**: [Stellar.expert - Contract Linkage](https://stellar.expert/explorer/testnet/tx/3b0c31e1e725ba545e0c7451e3571dcf6740eabf20e39ad1d43b4f3d59d618d6)
+* **Timestamp**: `2026-07-10T16:07:23Z`
+* **Network**: `Stellar Testnet`
+
+---
+
+## 🔄 Verified Contract Interactions
+
+Below are verified successful interaction examples recorded on Stellar Testnet for TaskProof:
 
 ### 1. Task Creation
-* **Operation**: User calls `create_task` on the Task Contract.
-* **XDR signing**: Built with the user's public address as the `owner`. The user reviews and signs the transaction in Freighter.
-* **On-Chain confirmation**: The transaction is submitted via the Soroban RPC node and included in a ledger.
-* **Emitted Event**:
-  * **Contract ID**: `CAVWBY4AFQ5FF723ZJ5KPI4SY5HSOYR4P63XKOVEXSBWWII4FPKZ2NL4`
-  * **Topics**: `["task_created", 1]`
-  * **Data**: `GAO7XCWGTBDN2LQCISRHX4K2ZF566QG3BNQEP53HCNZ5FUVNUKMIIQTL` (owner address)
+* **Transaction Hash**: `baf17ed8b82a4aacb90b7436f19a281cf3ec5ee152f2e03fe07667d4b2a657d7`
+* **Explorer Link**: [Stellar.expert - Create Task](https://stellar.expert/explorer/testnet/tx/baf17ed8b82a4aacb90b7436f19a281cf3ec5ee152f2e03fe07667d4b2a657d7)
+* **Operation Type**: `InvokeHostFunction (create_task)`
+* **Result**: Success (`task_created` event emitted on-chain with task ID 1)
 
-### 2. Task Completion (Inter-Contract Proof Storage)
-* **Operation**: User calls `complete_task` on the Task Contract.
-* **Parameters**: `id = 1`, `hash = 0x0707070707070707070707070707070707070707070707070707070707070707` (SHA-256 binary hash of proof)
-* **Execution**:
-  1. The Task Contract checks authority and sets the task's progress to 100% and status to `Completed`.
-  2. The Task Contract invokes `record_proof` on the Progress Registry Contract.
-  3. The Progress Registry Contract verifies that the caller is the authorized Task Contract, constructs a `ProofRecord` containing the proof hash, owner address, and ledger timestamp, and saves it to persistent storage.
-* **Emitted Events**:
-  1. **From Task Contract**: `["task_completed", 1]` with data `0x070707...` (proof hash)
-  2. **From Progress Registry**: `["proof_stored", 1]` with data `0x070707...` (proof hash)
+### 2. Task Progress Update
+* **Transaction Hash**: `f88d8a7ded44bd19eaa78a11eabb24bd78dae768a8512307fdf7df3ab1357782`
+* **Explorer Link**: [Stellar.expert - Update Progress](https://stellar.expert/explorer/testnet/tx/f88d8a7ded44bd19eaa78a11eabb24bd78dae768a8512307fdf7df3ab1357782)
+* **Operation Type**: `InvokeHostFunction (update_progress)`
+* **Result**: Success (`task_updated` event emitted setting progress to 50% for task ID 1)
+
+### 3. Task Completion & Proof Submission (Inter-Contract Call)
+* **Transaction Hash**: `c1713174596a9769b5b7c5791b0ada4d39b377f651991227ec94e5993476d28e`
+* **Explorer Link**: [Stellar.expert - Complete Task / Proof Registry](https://stellar.expert/explorer/testnet/tx/c1713174596a9769b5b7c5791b0ada4d39b377f651991227ec94e5993476d28e)
+* **Operation Type**: `InvokeHostFunction (complete_task)`
+* **Result**: Success (Emits `task_completed` from Task contract, executes a type-safe cross-contract call to the Progress Registry, and saves the SHA-256 cryptographic proof, emitting `proof_stored` event)
+
+---
+
+## 📋 Deployment Logs
+
+Output of the deployer console log running `npm run deploy` on testnet:
+
+```
+--- Step 1: Building smart contracts to optimized WASMs ---
+Executing: stellar contract build
+
+--- Step 2: Generating and funding deployer key on Testnet ---
+Executing: stellar keys generate deployer --network testnet --fund
+Deployer Public Key: GAO7XCWGTBDN2LQCISRHX4K2ZF566QG3BNQEP53HCNZ5FUVNUKMIIQTL
+
+--- Step 3: Deploying Progress Registry Contract ---
+Executing: stellar contract deploy --wasm "../target/wasm32-unknown-unknown/release/registry_contract.wasm" --source deployer --network testnet -- --admin "GAO7XCWGTBDN2LQCISRHX4K2ZF566QG3BNQEP53HCNZ5FUVNUKMIIQTL" --task_contract "GAO7XCWGTBDN2LQCISRHX4K2ZF566QG3BNQEP53HCNZ5FUVNUKMIIQTL"
+Progress Registry Contract ID: CAQSIDKJH4W5MYPUPCTKPJYD4KSLNFTMITXAAS3UOXQ2TX437KJYLBOO
+
+--- Step 4: Deploying Task Contract ---
+Executing: stellar contract deploy --wasm "../target/wasm32-unknown-unknown/release/task_contract.wasm" --source deployer --network testnet -- --registry "CAQSIDKJH4W5MYPUPCTKPJYD4KSLNFTMITXAAS3UOXQ2TX437KJYLBOO"
+Task Contract ID: CAVWBY4AFQ5FF723ZJ5KPI4SY5HSOYR4P63XKOVEXSBWWII4FPKZ2NL4
+
+--- Step 5: Invoking Registry set_task_contract ---
+Executing: stellar contract invoke --id "CAQSIDKJH4W5MYPUPCTKPJYD4KSLNFTMITXAAS3UOXQ2TX437KJYLBOO" --source deployer --network testnet -- set_task_contract --task_contract "CAVWBY4AFQ5FF723ZJ5KPI4SY5HSOYR4P63XKOVEXSBWWII4FPKZ2NL4"
+Circular address configuration link finalized on-chain.
+
+--- Step 6: Syncing deployment configuration to React client ---
+Config written successfully to: c:\Projects\Stellar projects\taskproof\frontend\src\config.json
+
+🎉 Stellar Level 3 Contract Deployment complete!
+```
 
 ---
 
